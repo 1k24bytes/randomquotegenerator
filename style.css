@@ -59,6 +59,10 @@
     box-shadow: 1px 3px 5px 1px rgba(0,0,0,0.5);
 }
 
+.incont {
+  border: 5px solid rgba(255, 255, 255, 0.2);
+}
+
 .inner-container p {
     font-size: 1.8rem;
     color: #001; 
