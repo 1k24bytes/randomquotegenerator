@@ -1,28 +1,56 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="style.css">
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <title>Random Quote Generator</title>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Quote Generator</title>
 </head>
-
 <body>
-    
-    <main class="box"> 
-    
-	<div class="container">
-		<div class="title-container"><h1>RANDOM QUOTES</h1></div>
-		<div class="inner-container">
-			<p id="quote"></p>
-			<p id="author"></p>
-		</div>
-		<div class="button-container">
-		<button class="glass-button" id="new-quote">New Quote</button>
-	</div>
-	</div>
-	</main>
+    <div class="header">
+        
+        <div class="title">Randomly</div>
+    </div>
+    <div class="container">
+     
+        <div class="quotebox">
+           <div class="quotebox-head">
+            <div class="cir"></div>
+            <div class="cir"></div>
+            <div class="cir"></div>
+            
+           </div>
+           <div class="quotebox-body">
+            <div class="quote">
+                <p id="quote">1</p>
+            </div>
+            <div class="author">
+                <p id="author">2</p>
+            </div>
+           </div>
+        </div>
+        <button id="newquote" class="genbtn">New Quote</button>
+    </div>
     <script src="script.js"></script>
+        <script>
+            const quote = document.getElementById("quote");
+const author = document.getElementById("author");
+const api_url = "https://api.quotable.io/random";
+const newquote = document.getElementById("newquote");
+
+async function getquote(url){
+    const response = await fetch(url);
+    var data = await response.json();
+    quote.innerHTML = data.content;
+    author.innerHTML = data.author;
+}
+
+newquote.addEventListener("click", function() {
+    getquote(api_url);
+});
+
+        getquote(api_url);
+        </script>
 </body>
 </html>
